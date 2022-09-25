@@ -1,0 +1,14 @@
+.cart-button{ 
+    background-color: lightslategray;
+    height: 2.5rem;
+    border-radius: 5px;
+    width:10rem;
+    
+}
+.button{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 2.5rem;
+
+}

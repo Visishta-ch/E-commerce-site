@@ -1,0 +1,33 @@
+.product{
+    display: block;
+    
+    margin: auto;
+    text-align: center;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    /* width:25%; */
+     width: 350px;
+
+    
+}
+.product h4{ 
+    font-size:20px;
+}
+.product-list-amount{
+
+    display:flex; 
+    justify-content: space-between;
+    justify-items: space-between;
+    margin: 8px;
+    padding: 4px;
+    /* background-color: rgb(118, 110, 110); */
+    
+}
+.add-btn{
+    width: auto;
+    height: 30px;
+    background-color: skyblue;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+}

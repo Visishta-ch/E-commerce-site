@@ -1,0 +1,32 @@
+.footer{
+    background-color:skyblue;
+    /* width:100%; */
+}
+.footer-title{
+    color: white;
+    display: block;
+    margin-left: 10px;
+    padding: 10px;
+    font-size: 2rem;
+    text-align: left;
+}
+.footer-icons{
+   
+    position: relative; 
+    display: flex;
+    justify-content: space-around;
+    
+   
+
+}
+
+.footer-logo{
+   
+    height: 40px;
+    width: 250px;
+    position: relative;
+    top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+

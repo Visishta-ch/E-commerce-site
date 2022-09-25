@@ -1,0 +1,43 @@
+nav{
+    background-color: black;
+    color: white;
+    padding: 0.5em;
+
+    /* width: 100%; */
+}
+
+.nav-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    letter-spacing:3.5px;
+    font-weight: bold;
+}
+
+.cart-btn{
+    position: relative;
+    float:right;
+    top: -44px;
+    left: -72px;
+    border-radius: 5px;
+    outline: none;
+    width: 60px;
+    height:  30px;
+}
+.cart-number{
+    position: relative;
+    float:right;
+    top: -44px;
+}
+
+.page-header{
+    color:navy;
+    background-color:#ccc;
+    text-align: center;
+    padding: 40px;
+    font-size:100px;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
