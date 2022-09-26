@@ -1,9 +1,9 @@
 import React from 'react'
 import './Header.css'
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <>
+    <div>
         <nav>
             <div className="nav-bar">
                 <a href='#' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}}>HOME</a>
@@ -11,14 +11,16 @@ const Header = () => {
                 <a href='#' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}}>ABOUT</a>
 
             </div>
-            <button className='cart-btn'>Cart </button> <span className="cart-number">0</span>
+            <button className='cart-btn' onClick={props.OpenCartHandler}>Cart </button> <span className="cart-number">0</span>
           
         </nav>
-        <header className="page-header">
+        <div className="header">
+                <header className="page-header">
              The Generics
         </header>
-       
-    </>
+        </div>
+
+    </div>
   )
 }
 

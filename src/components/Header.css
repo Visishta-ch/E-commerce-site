@@ -1,9 +1,11 @@
+
 nav{
     background-color: black;
     color: white;
     padding: 0.5em;
-
-    /* width: 100%; */
+    position:fixed;
+    width: 100%;
+    z-index: 1;
 }
 
 .nav-bar{
@@ -15,7 +17,10 @@ nav{
     letter-spacing:3.5px;
     font-weight: bold;
 }
-
+.header{
+    position: relative;
+    top: 7rem;
+}
 .cart-btn{
     position: relative;
     float:right;
@@ -33,6 +38,8 @@ nav{
 }
 
 .page-header{
+    /* position:fixed; */
+    padding-top: 8rem;
     color:navy;
     background-color:#ccc;
     text-align: center;
