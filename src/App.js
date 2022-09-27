@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Button from './components/Button'
 import AvailableProducts from './components/Products/AvailableProducts'
 import CartItem  from './components/CartItems/CartItem';
+import CartProvider from './store/CartProvider'
 function App(props) {
   const[cartStatus, setCartStatus] = useState(false);
 
@@ -18,13 +19,13 @@ function App(props) {
    }
 
   return (
-    <>
+    <CartProvider>
     {cartStatus && <CartItem   onClick={hideCartList} />}
       <Header OpenCartHandler={showCartList}/>
       <AvailableProducts/>
       <Button/>
       <Footer/>
-    </>
+    </CartProvider>
   );
 }
 

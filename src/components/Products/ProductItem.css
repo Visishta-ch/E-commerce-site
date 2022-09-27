@@ -15,6 +15,7 @@
 .product-list-amount{
 
     display:flex; 
+    flex-wrap: wrap;
     justify-content: space-between;
     justify-items: space-between;
     margin: 8px;

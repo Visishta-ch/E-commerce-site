@@ -1,7 +1,15 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import './Header.css'
+import Cartcontext from '../store/cart-context'
+
 
 const Header = (props) => {
+  const cartctx = useContext(Cartcontext);
+  let cartItemCount = 0;
+  cartctx.items.forEach(item => {
+    cartItemCount += 1;
+    console.log(cartItemCount)
+  })
   return (
     <div>
         <nav>
@@ -11,7 +19,7 @@ const Header = (props) => {
                 <a href='#' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}}>ABOUT</a>
 
             </div>
-            <button className='cart-btn' onClick={props.OpenCartHandler}>Cart </button> <span className="cart-number">0</span>
+            <button className='cart-btn' onClick={props.OpenCartHandler}>Cart </button> <span className="cart-number">{cartItemCount}</span>
           
         </nav>
         <div className="header">

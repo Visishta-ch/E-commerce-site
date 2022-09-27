@@ -1,11 +1,14 @@
-import React from 'react'
+import React,{useContext, useState} from 'react'
 import Modal from '../UI/Modal'
-import Cart from './Cart.js'
+// import Cart from './Cart.js'
 import './CartItem.css'
+import './Cart.css'
+import Cartcontext from '../../store/cart-context'
 
 const cartElements = [
 
     {
+      id: 'k1',
     
     title: 'Colors',
     
@@ -29,46 +32,54 @@ const cartElements = [
     
     },
     
-    {
+    // {
     
-    title: 'Yellow and Black Colors',
+    // title: 'Yellow and Black Colors',
     
-    price: 70,
+    // price: 70,
     
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
+    // imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
     
-    quantity: 1,
+    // quantity: 1,
     
-    },
-    {
-    
-        title: 'Yellow and Black Colors',
-        
-        price: 70,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-        
-        quantity: 1,
-        
-        },
-       
+    // },
+         
             
     
     ]
 
+  
 const CartItem = (props) => {
+
+  let [quantity, setQuantity] = useState(1);
+
+    const cartCtx = useContext(Cartcontext);
+    console.log("cartCtx", Cartcontext);
+
+    const exisitingCartItems = [...cartCtx.items]
+    console.log('exisitingCartItems',exisitingCartItems)
+    let amount=0;
+    cartCtx.items.forEach(item => {
+      amount += 1;
+        // amount += Number((item.price)*(item.quantity));
+      })
+
+
+
       const cartListItem = <ul className="listrow">{
       
-      cartElements.map((listItem) =>   (
-        <Cart 
-                
-                // className="item"
-                key={listItem.id}
-                imageUrl={listItem.imageUrl}
-                title={listItem.title}
-                price={listItem.price}
-                quantity={listItem.quantity}
-                />
+      cartElements.map((item) =>   (  <li className="list-row">
+    
+         <img src = {item.imageUrl} alt='imge' style={{width:'80px', height:'80px',borderRadius:'5px'}} />
+            <h4 style={{alignSelf:'center'}}>{item.title}</h4>
+           <span className='list-price'>${item.price}</span> 
+          <span className= 'list-amount'><input type="text" value={item.quantity} placeholder={item.quantity} style={{width:'20px', height:'20px',textAlign:'center'}} /></span> 
+        
+          <button className='rmv-btn'>remove</button>
+         </li>
+      
+      
+        
        
       ))}
     
@@ -85,8 +96,8 @@ const CartItem = (props) => {
         <span className="price">Price</span>
          <span className="quantity">Quantity</span>
              {cartListItem}
-              
-            <div className="total">Total <span>$100 </span>  </div>
+              {console.log(cartListItem)}
+            <div className="total">Total <span>{amount}</span>  </div>
         <div>      
              <button className="btn-order">Purchase</button>
         </div>
