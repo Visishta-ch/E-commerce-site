@@ -1,23 +1,23 @@
 import React,{useContext} from 'react'
 import './ProductItem.css'
-import Cartcontext from '../../store/cart-context';
+ import Cartcontext from '../../store/Cartcontext';
 
 
 const ProductItem = (props) => {
-
+  // console.log(props)
   const cartCtx = useContext(Cartcontext);
 
-  const addItemToCart =(e) => {
+  const addItemToCart = (e) => {
      
     e.preventDefault();
     console.log('addItem')
     cartCtx.addItems({...props.item});
-    console.log('cart items', cartCtx);
+    // console.log('cart items', cartCtx);
     }
 
 
   return (
-    <div className="product" id={props.price}>
+    <div className="product" id={props.price} item={props}>
         <h4 >{props.title}</h4>
         
             <img src= {props.image} alt='' />

@@ -3,79 +3,85 @@ import Modal from '../UI/Modal'
 // import Cart from './Cart.js'
 import './CartItem.css'
 import './Cart.css'
-import Cartcontext from '../../store/cart-context'
+import Cartcontext from '../../store/Cartcontext'
 
-const cartElements = [
+// const cartElements = [
 
-    {
-      id: 'k1',
+//     {
+//       id: 'k1',
     
-    title: 'Colors',
+//     title: 'Colors',
     
-    price: 100,
+//     price: 100,
     
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
+//     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
     
-    quantity: 2,
+//     quantity: 2,
     
-    },
+//     },
     
-    {
+//     {
     
-    title: 'Black and white Colors',
+//     title: 'Black and white Colors',
     
-    price: 50,
+//     price: 50,
     
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
+//     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
     
-    quantity: 3,
+//     quantity: 3,
     
-    },
+//     },
     
-    // {
+//     // {
     
-    // title: 'Yellow and Black Colors',
+//     // title: 'Yellow and Black Colors',
     
-    // price: 70,
+//     // price: 70,
     
-    // imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
+//     // imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
     
-    // quantity: 1,
+//     // quantity: 1,
     
-    // },
+//     // },
          
             
     
-    ]
+//     ]
 
   
 const CartItem = (props) => {
 
-  let [quantity, setQuantity] = useState(1);
+   
 
     const cartCtx = useContext(Cartcontext);
-    console.log("cartCtx", Cartcontext);
+    // console.log("cartCtx", cartCtx.items);
 
-    const exisitingCartItems = [...cartCtx.items]
-    console.log('exisitingCartItems',exisitingCartItems)
+    // const exisitingCartItems = [...cartCtx.items]
+    // console.log('exisitingCartItems',exisitingCartItems)
     let amount=0;
     cartCtx.items.forEach(item => {
-      amount += 1;
-        // amount += Number((item.price)*(item.quantity));
+      
+        amount += Number((item.price)*(item.quantity));
+       
       })
+
+      const removeCartItem =(item) =>{
+        console.log('removeCartItem')
+        cartCtx.removeItems(item)
+      }
 
 
 
       const cartListItem = <ul className="listrow">{
       
-      cartElements.map((item) =>   (  <li className="list-row">
-    
-         <img src = {item.imageUrl} alt='imge' style={{width:'80px', height:'80px',borderRadius:'5px'}} />
+      cartCtx.items.map((item) =>   (  <li className="list-row"  key={item.id}>
+   
+         <img src = {item.imageUrl} alt='img' style={{width:'80px', height:'80px',borderRadius:'5px'}} />
             <h4 style={{alignSelf:'center'}}>{item.title}</h4>
            <span className='list-price'>${item.price}</span> 
           <span className= 'list-amount'><input type="text" value={item.quantity} placeholder={item.quantity} style={{width:'20px', height:'20px',textAlign:'center'}} /></span> 
         
-          <button className='rmv-btn'>remove</button>
+          <button className='rmv-btn' onClick = {() => removeCartItem(item)}>remove</button>
          </li>
       
       
@@ -96,7 +102,7 @@ const CartItem = (props) => {
         <span className="price">Price</span>
          <span className="quantity">Quantity</span>
              {cartListItem}
-              {console.log(cartListItem)}
+              {/* {console.log(cartListItem)} */}
             <div className="total">Total <span>{amount}</span>  </div>
         <div>      
              <button className="btn-order">Purchase</button>

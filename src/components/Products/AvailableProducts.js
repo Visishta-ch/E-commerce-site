@@ -1,6 +1,8 @@
 import React from 'react'
 import ProductItem from './ProductItem'
 
+
+
 const productsArr = [
 
     {   id:'k1',
@@ -14,7 +16,7 @@ const productsArr = [
     {   id:'k2',
         title: 'Black and white Colors',
         price: 50,
-        quantity: 1,
+        quantity: 2,
         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
     
     },
@@ -41,8 +43,13 @@ const productsArr = [
     
 
 const AvailableProducts = () => {
+
+   
+  
+
     const prod = productsArr.map((product) => (
         <ProductItem 
+            item={product}
             key={product.id}
             id={product.id}
             title={product.title}
@@ -51,7 +58,7 @@ const AvailableProducts = () => {
         />
     ))
   return (
-    <div className='productCard' style={{position:'relative',top:'7rem'}}>
+    <div className='productCard' style={{position:'relative',top:'7rem'}} id = 'id'>
        <div> {prod}</div> 
        
     </div>

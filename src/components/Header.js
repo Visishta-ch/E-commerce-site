@@ -1,6 +1,6 @@
 import React,{useContext} from 'react'
 import './Header.css'
-import Cartcontext from '../store/cart-context'
+import Cartcontext from '../store/Cartcontext'
 
 
 const Header = (props) => {
@@ -8,7 +8,7 @@ const Header = (props) => {
   let cartItemCount = 0;
   cartctx.items.forEach(item => {
     cartItemCount += 1;
-    console.log(cartItemCount)
+    console.log('items in cart:',cartItemCount)
   })
   return (
     <div>

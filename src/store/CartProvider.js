@@ -1,32 +1,35 @@
 import React,{useState} from 'react';
-import Cartcontext from './cart-context';
+import Cartcontext from './Cartcontext';
 
-const CartProvider = props => {
+const CartProvider =  (props) => {
+  let [quantity, setQuantity] = useState(1);
     const [items, setItems] = useState([]);
-
+    console.log('itemss',items)
     const addItemToCart = (item) => {
+      
         const exisitingCartItems = [...items];
-        console.log('clicked id item:',item);
-        setItems([...exisitingCartItems,item])
-        // const itemIdx = exisitingCartItems.findIndex((i) => i.id === item.id);
-        // console.log(itemIdx);
-        // if(itemIdx === -1){
-        //   exisitingCartItems[itemIdx].quantity = Number(exisitingCartItems[itemIdx].quantity)+1;
-        //     console.log('item already in cart');
+        console.log('existing itams', exisitingCartItems);
+        console.log('clicked id item:',item.id);
+        const itemIndex = exisitingCartItems.findIndex((i) => i.id === item.id);
+        if( itemIndex === -1 )
+          setItems([...items,item])
+        else{
+          // exisitingCartItems[itemIndex].quantity = Number(exisitingCartItems[itemIndex].quantity)+1;
+          // items[itemIndex].quantity = Number(items[itemIndex].quantity)+1;
+          const updatedList= exisitingCartItems[itemIndex].quantity++;
+          setQuantity(updatedList);
+          
+          // setItems(exisitingCartItems);
+         
+           console.log('item already in cart', exisitingCartItems[itemIndex].quantity);
+          
+        }
 
-        // } else{
-        //   setItems([...exisitingCartItems,item])
-        // }
-        //     // exisitingCartItems.push(item);
-        //     console.log('added item to cart', items);
             
-        // }
-       
-        
     }
 
-    const removeItemFromCart = () => {
-
+    const removeItemFromCart = (item) => {
+      setItems(items.filter(c => c.id !== item.id)); 
     }
     const cartListItems = {
 
