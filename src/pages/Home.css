@@ -1,0 +1,63 @@
+.album{
+    display: block;
+    border: 1px solid #43c5f0;
+    padding: 15px 30px;
+    font-size: 23px;
+    font-weight: 200;
+    margin: 10px auto;
+    background: inherit;
+    cursor: pointer;
+    color: rgb(246, 241, 241);
+}
+
+.play-btn{
+    border: 1px solid #47bee6;
+    display: block;
+    border-radius: 50%;
+    padding: 22px;
+    font-size: 30px;
+    font-weight: 200;
+    margin: 20px auto;
+    background: inherit;
+}
+
+#tours{
+    display: block;
+    max-width:900px;
+    margin: 2px auto;
+}
+
+.tour-list {
+        text-align: center;
+        padding: 10px;
+        font-family: "Helvet";
+        color:rgba(49, 29, 29);
+        font-size: 18px
+}
+.tour-item{
+    display: flex;
+    justify-content:space-between;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.tour-item .tour-date{
+    width:15%;
+}
+
+.tour-item .tour-place{
+    width:20%;
+}
+.tour-item .tour-place-1{
+    width:45%;
+}
+
+.tour-item .tour-btn{
+    width: 9rem;
+    height: 2rem;
+    background-color: skyblue;
+    border: none;
+    border-radius: 4px;
+    color:white;
+    font-weight: bold;
+}

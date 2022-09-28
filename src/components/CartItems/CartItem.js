@@ -51,13 +51,8 @@ import Cartcontext from '../../store/Cartcontext'
   
 const CartItem = (props) => {
 
-   
-
     const cartCtx = useContext(Cartcontext);
-    // console.log("cartCtx", cartCtx.items);
-
-    // const exisitingCartItems = [...cartCtx.items]
-    // console.log('exisitingCartItems',exisitingCartItems)
+    
     let amount=0;
     cartCtx.items.forEach(item => {
       

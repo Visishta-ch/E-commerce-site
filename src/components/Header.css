@@ -2,9 +2,10 @@
 nav{
     background-color: black;
     color: white;
-    padding: 0.5em;
+    padding: 0.2em;
     position:fixed;
     width: 100%;
+    height:60px;
     z-index: 1;
 }
 
@@ -19,7 +20,7 @@ nav{
 }
 .header{
     position: relative;
-    top: 7rem;
+    top: 2.3rem;
 }
 .cart-btn{
     position: relative;
@@ -39,7 +40,7 @@ nav{
 
 .page-header{
     /* position:fixed; */
-    padding-top: 8rem;
+    padding-top: 6rem;
     color:navy;
     background-color:#ccc;
     text-align: center;
@@ -47,4 +48,21 @@ nav{
     font-size:100px;
     font-weight: bold;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.nav-about:hover 
+
+{
+    outline: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.nav-home:hover
+/* .nav-bar a.active */
+{
+    outline: 1px solid #ccc;
+    border-radius: 3px;
+}
+.nav-store:hover{
+    outline: 1px solid #ccc;
+    border-radius: 3px;
 }

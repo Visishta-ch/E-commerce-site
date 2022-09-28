@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import {Route,Switch} from 'react-router';
 import './App.css';
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -6,6 +7,10 @@ import Button from './components/Button'
 import AvailableProducts from './components/Products/AvailableProducts'
 import CartItem  from './components/CartItems/CartItem';
 import CartProvider from './store/CartProvider'
+import Product from './pages/Product'
+import Home from './pages/Home';
+import About from './pages/About'
+
 function App(props) {
   const[cartStatus, setCartStatus] = useState(false);
 
@@ -20,11 +25,27 @@ function App(props) {
 
   return (
     <CartProvider>
-    {cartStatus && <CartItem   onClick={hideCartList} />}
-      <Header OpenCartHandler={showCartList}/>
-      <AvailableProducts/>
-      <Button/>
-      <Footer/>
+      <Switch>
+        <Route path="/products">
+            <Product/>
+        </Route>
+        <Route path = "/About">
+            <About/>
+        </Route>
+        <Route path = "/Store">
+            {cartStatus && <CartItem   onClick={hideCartList} />}
+              <Header OpenCartHandler={showCartList}/>
+              <AvailableProducts/>
+              <Button/>
+              <Footer/>
+            </Route>
+        <Route path =''>
+           <Home/>
+        </Route>
+     </Switch>
+    
+    
+     
     </CartProvider>
   );
 }

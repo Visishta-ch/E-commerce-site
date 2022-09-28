@@ -1,4 +1,6 @@
 import React,{useContext} from 'react'
+
+import {NavLink} from 'react-router-dom'
 import './Header.css'
 import Cartcontext from '../store/Cartcontext'
 
@@ -14,9 +16,9 @@ const Header = (props) => {
     <div>
         <nav>
             <div className="nav-bar">
-                <a href='#' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}}>HOME</a>
-                <a href='#' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}}>STORE</a>
-                <a href='#' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}}>ABOUT</a>
+                <NavLink  to='' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} >HOME</NavLink>
+                <NavLink to='/Store' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-store">STORE</NavLink>
+                <NavLink to='/About' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">ABOUT</NavLink>
 
             </div>
             <button className='cart-btn' onClick={props.OpenCartHandler}>Cart </button> <span className="cart-number">{cartItemCount}</span>

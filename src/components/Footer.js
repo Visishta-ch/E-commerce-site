@@ -3,6 +3,7 @@ import spotify from './images/spotify.png'
 import fb from './images/fb.png'
 import utube from './images/youtube.png'
 import './Footer.css'
+// import './foot.css'
 const Footer = () => {
   return (
     <footer className='footer'>
