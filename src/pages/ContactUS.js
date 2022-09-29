@@ -1,6 +1,6 @@
 import React,{useRef} from 'react'
 import {NavLink} from 'react-router-dom';
-
+import './Contact.css'
 const ContactUS = () => {
     const nameRef = useRef('');
     const emailRef = useRef('');
@@ -43,15 +43,20 @@ const ContactUS = () => {
             The Generics <br/>
         </div>
         <section>
+        <h1>Please Fill in the Form to Proceed </h1>
+        <div className="form-div">
+            
             <form onSubmit={saveUserDetails}>
-                <label htmlFor='name'>User Name</label>
-                <input type='text' id='name' placeholder ='Your Name' ref={nameRef}/>
-                <label htmlFor='email'>EMail</label>
-                <input type='text' id='email' placeholder = 'Your Email' ref={emailRef}/> 
-                <label htmlFor='password'>Password</label>
-                <input type='password' id='password' placeholder='Password' ref={passwordRef}/>
-                <button>Submit Details</button>
+                <label htmlFor='name'>User Name</label><br/>
+                <input type='text' id='name' placeholder ='Your Name' ref={nameRef}/><br/>
+                <label htmlFor='email'>E-Mail</label><br/>
+                <input type='text' id='email' placeholder = 'Your Email' ref={emailRef}/> <br/>
+                <label htmlFor='password'>Password</label><br/>
+                <input type='password' id='password' placeholder='Password' ref={passwordRef}/><br/>
+                <button className='btn'>Submit Details</button>
             </form>
+            </div>
+
         </section>
  </>
   )
