@@ -9,7 +9,8 @@ import CartItem  from './components/CartItems/CartItem';
 import CartProvider from './store/CartProvider'
 import Product from './pages/Product'
 import Home from './pages/Home';
-import About from './pages/About'
+import About from './pages/About';
+import ContactUS from './pages/ContactUS';
 
 function App(props) {
   const[cartStatus, setCartStatus] = useState(false);
@@ -31,6 +32,9 @@ function App(props) {
         </Route>
         <Route path = "/About">
             <About/>
+        </Route>
+        <Route path = "/Contact">
+          <ContactUS/>
         </Route>
         <Route path = "/Store">
             {cartStatus && <CartItem   onClick={hideCartList} />}

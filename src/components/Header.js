@@ -18,8 +18,9 @@ const Header = (props) => {
             <div className="nav-bar">
                 <NavLink  to='' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} >HOME</NavLink>
                 <NavLink to='/Store' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-store">STORE</NavLink>
-                <NavLink to='/About' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">ABOUT</NavLink>
-
+                <NavLink to='/About' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">ABOUT US</NavLink>
+                <NavLink to='/Contact' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">CONTACT US</NavLink>
+ 
             </div>
             <button className='cart-btn' onClick={props.OpenCartHandler}>Cart </button> <span className="cart-number">{cartItemCount}</span>
           
