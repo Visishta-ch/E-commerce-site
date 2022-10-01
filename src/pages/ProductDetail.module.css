@@ -1,0 +1,38 @@
+.img{
+    float: left;
+    height: 22px;
+    width: 19px;
+    /* border: 1px solid #ddd; */
+    border-left: none;
+    border-bottom: none;
+    margin: 18px 45px 0px -65px
+}
+
+.navDiv{
+    background-color: #cf1dc3;
+    position: relative;
+    top: 4rem;
+}
+
+.navbar{
+    position: relative;
+    text-decoration: none;
+    border-radius: 5px;
+    /* border-top: 2px solid white; */
+    background-color: #cf831d;
+    padding: 10px;
+    margin: 10px;
+    display:flex;
+    justify-content: space-around;
+    /* top: 3rem; */
+}
+
+/* 
+.link{
+    text-decoration: none;
+    color:black;
+    outline: 1px solid #ccc;
+    padding: 10px;
+    width: 60px;
+    text-align: center;
+} */

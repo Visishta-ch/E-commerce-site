@@ -1,5 +1,5 @@
-import React,{useState} from 'react';
-import {Route,Switch} from 'react-router';
+import React,{useState,useContext} from 'react';
+import {Route,Switch,Redirect} from 'react-router';
 import './App.css';
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -13,9 +13,14 @@ import About from './pages/About';
 import ContactUS from './pages/ContactUS';
 import ProductDetail from './pages/ProductDetail';
 import Login from './pages/Login';
+import AuthContext from './store/AuthContext';
+
+
 function App(props) {
   const[cartStatus, setCartStatus] = useState(false);
-
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
+  console.log('log status', isLoggedIn);
   const showCartList=()=>{
     setCartStatus(true);
     
@@ -40,17 +45,41 @@ function App(props) {
         <Route path = "/Contact">
           <ContactUS/>
         </Route>
-        <Route path = "/Login">
+        <Route path = "/Login" >
             <Login/>
-          </Route>
-        <Route path = "/Store">
-            {cartStatus && <CartItem   onClick={hideCartList} />}
+        </Route>
+        <Route path = "/Login/:Store" >
+        {cartStatus && <CartItem   onClick={hideCartList} />}
               <Header OpenCartHandler={showCartList}/>
               <AvailableProducts/>
               <Button/>
-              <Footer/>
-            </Route>
-        <Route path =''>
+              <Footer/> 
+       
+        </Route>
+     
+        {!isLoggedIn && <Route path='/Store'>
+          <h1>Not logged in...Please go back to home to login and can see the products </h1>
+        </Route>}
+      
+
+        {isLoggedIn  &&    <Route path = "/Store">
+        {cartStatus && <CartItem   onClick={hideCartList} />}
+              <Header OpenCartHandler={showCartList}/>
+              <AvailableProducts/>
+              <Button/>
+              <Footer/> 
+           
+        </Route> }
+
+        <Route path = "/Store" >
+          
+             {cartStatus && <CartItem   onClick={hideCartList} />}
+              <Header OpenCartHandler={showCartList}/>
+              <AvailableProducts/>
+              <Button/>
+              <Footer/> 
+           </Route> 
+        <Route path ='' exact>
            <Home/>
         </Route>
         

@@ -1,3 +1,4 @@
+
 .product{
     display: block;
     margin: auto;
@@ -8,6 +9,10 @@
 
     
 }
+/* product-img{
+    width: 118px;
+    height: 121px;
+} */
 .product h4{ 
     font-size:20px;
     

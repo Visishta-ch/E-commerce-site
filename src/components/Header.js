@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-
+import AuthContext from '../store/AuthContext'
 import {NavLink} from 'react-router-dom'
 import './Header.css'
 import Cartcontext from '../store/Cartcontext'
@@ -12,6 +12,12 @@ const Header = (props) => {
     cartItemCount += 1;
     console.log('items in cart:',cartItemCount)
   })
+  const authCtx = useContext(AuthContext)
+  const logoutHandler=(e) => {
+    e.preventDefault();
+    authCtx.logout();
+    console.log('Logged out')
+}
   return (
     <div>
         <nav>
@@ -20,10 +26,11 @@ const Header = (props) => {
                 <NavLink to='/Store' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-store">STORE</NavLink>
                 <NavLink to='/About' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">ABOUT US</NavLink>
                 <NavLink to='/Contact' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">CONTACT US</NavLink>
- 
+                
             </div>
-            <button className='cart-btn' onClick={props.OpenCartHandler}>Cart </button> <span className="cart-number">{cartItemCount}</span>
           
+            <button className='cart-btn' onClick={props.OpenCartHandler}>Cart </button> <span className="cart-number">{cartItemCount}</span>
+            <button to='/Login' style={{textDecoration: 'none',color: 'black',position: 'relative', float:'right',    top: '-42px', left: '-72px'}} onClick={logoutHandler}>LOGOUT</button>
         </nav>
         <div className="header">
                 <header className="page-header">

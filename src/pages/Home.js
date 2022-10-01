@@ -1,7 +1,14 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {NavLink} from 'react-router-dom'
+import AuthContext from '../store/AuthContext';
 import './Home.css'
 const Home = () => {
+    const authCtx = useContext(AuthContext)
+    const logoutHandler=(e) => {
+        e.preventDefault();
+        authCtx.logout();
+        console.log('Logged out')
+    }
   return (
     <div>
          <nav>
@@ -10,10 +17,14 @@ const Home = () => {
                 <NavLink to='/Store' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-store">STORE</NavLink>
                 <NavLink to='/About' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">ABOUT US</NavLink>
                 <NavLink to='/Contact' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">CONTACT US</NavLink>
-
+                
             </div>
+            <NavLink to='/Login' style={{textDecoration: 'none',color: 'white',position: 'relative', float:'right',top:'-46px',left:'-250px'}}>LOGIN</NavLink>
+            <button to='/Login' style={{textDecoration: 'none',color: 'black',position: 'relative', float:'right',top:'-46px',left:'-28px'}} onClick={logoutHandler}>LOGOUT</button>
          </nav>
+     
         <div className="page-header" style={{color: 'white', backgroundColor: 'gray',paddingTop: '63px'}}>
+
             The Generics <br/>
             <button className='album'>Get the Latest Album</button>
             <button className='play-btn'>▶️</button>

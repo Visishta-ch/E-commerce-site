@@ -3,7 +3,9 @@ import AuthContext from '.././store/AuthContext'
 import {useHistory, NavLink} from 'react-router-dom';
 import styles from './Login.module.css';
 
+
 const Login = () => {
+
   const history = useHistory();
   const authCtx =useContext(AuthContext)
   const [loading,setLoading] = useState(false);
@@ -63,19 +65,18 @@ const Login = () => {
       <nav>
             <div className="nav-bar">
                 <NavLink  to='' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-home">HOME</NavLink>
-                <NavLink to='/Store' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-store">STORE</NavLink>
+                <NavLink to='/Login/Store' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-store">STORE</NavLink>
                 <NavLink to='/About' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">ABOUT US</NavLink>
                 <NavLink to='/Contact' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">CONTACT US</NavLink>
                 
             </div>
-            <NavLink to='/Login' style={{textDecoration: 'none',color: 'white',position: 'relative', float:'right',top:'-46px',left:'-25px'}}>LOGIN</NavLink>
+            <button to='/Login' style={{textDecoration: 'none',color: 'Black',position: 'relative', float:'right',top:'-46px',left:'-25px'}}>LOGOUT</button>
          </nav>
      
         <div className="page-header" style={{color: 'white', backgroundColor: 'gray',paddingTop: '63px'}}>
 
-            The Generics <br/>
-            <button className='album'>Get the Latest Album</button>
-            <button className='play-btn'>▶️</button>
+            Welcome to Generics <br/>
+          
         </div>
         <div className={styles.form_div}>
         <h1>USER LOGIN </h1>
@@ -88,7 +89,8 @@ const Login = () => {
             <br></br>
             {/* {loading && <p style={{color:'black'}}>Sending Request.....</p>} */}
             <button className={styles.btn}>Login</button>
-          </form>
+          </form>  
+ 
       </div>
 
       <footer className='footer'>
@@ -97,6 +99,7 @@ const Login = () => {
 
         </div>
     </footer>
+   
     </>
   )
 }
