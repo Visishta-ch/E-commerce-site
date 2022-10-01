@@ -11,7 +11,8 @@ import Product from './pages/Product'
 import Home from './pages/Home';
 import About from './pages/About';
 import ContactUS from './pages/ContactUS';
-
+import ProductDetail from './pages/ProductDetail';
+import Login from './pages/Login';
 function App(props) {
   const[cartStatus, setCartStatus] = useState(false);
 
@@ -30,12 +31,18 @@ function App(props) {
         <Route path="/products">
             <Product/>
         </Route>
+        <Route path = '/Store/:productId'>
+          <ProductDetail/>
+        </Route>
         <Route path = "/About">
             <About/>
         </Route>
         <Route path = "/Contact">
           <ContactUS/>
         </Route>
+        <Route path = "/Login">
+            <Login/>
+          </Route>
         <Route path = "/Store">
             {cartStatus && <CartItem   onClick={hideCartList} />}
               <Header OpenCartHandler={showCartList}/>
@@ -46,6 +53,8 @@ function App(props) {
         <Route path =''>
            <Home/>
         </Route>
+        
+        
      </Switch>
     
     

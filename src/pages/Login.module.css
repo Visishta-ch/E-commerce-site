@@ -1,0 +1,30 @@
+.form_div{
+    background-color: pink; 
+    text-align: center;
+}
+
+.form{
+    background-color:skyblue;
+    padding:1rem;
+    position: relative;
+    text-align: left;
+    display: block;
+    left: 23rem;
+    
+}
+.form label{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.btn{
+
+    height: 39px;
+    width: 80px;
+    margin:10px auto;
+    text-align: center;
+    background-color: rgb(94, 91, 91);color:azure;
+    border-radius: 5px;
+    border:none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
