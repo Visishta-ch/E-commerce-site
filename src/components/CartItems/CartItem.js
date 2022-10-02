@@ -4,7 +4,7 @@ import Modal from '../UI/Modal'
 import './CartItem.css'
 import './Cart.css'
 import Cartcontext from '../../store/Cartcontext'
-
+import AuthContext from '../../store/AuthContext'
 // const cartElements = [
 
 //     {
@@ -50,7 +50,11 @@ import Cartcontext from '../../store/Cartcontext'
 
   
 const CartItem = (props) => {
-
+    const authCtx = useContext(AuthContext);
+    const isLoggedIn = authCtx.isLoggedIn;
+    console.log('logged in status: ' + isLoggedIn);
+    console.log('token: ' + authCtx.token);
+    console.log('Logged mail: ' + authCtx.mail)
     const cartCtx = useContext(Cartcontext);
     
     let amount=0;

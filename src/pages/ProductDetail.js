@@ -2,6 +2,8 @@ import React from 'react'
 import {useParams,NavLink} from 'react-router-dom';
 import searchLogo from '../components/images/finder.jpg';
 import styles from './ProductDetail.module.css';
+import Reviews from '../components/SingleProduct/Reviews'
+import ImageSlider from '../components/SingleProduct/ImageSlider'
     const ProductDetail = () => {
 
     const params = useParams();
@@ -31,15 +33,15 @@ import styles from './ProductDetail.module.css';
               <option value="opel">Opel</option>
               <option value="audi">Audi</option>
             </select>
-              {/* <a href="#" className={styles.link}>Music </a>
+               <a href="#" className={styles.link}>Music </a>
               <a href="#"  className={styles.link}>DOlls</a>
-              <a href='#' className={styles.link}>Movies</a> */}
-              <select id="cars">
+              <a href='#' className={styles.link}>Movies</a> 
+               <select id="cars">
               <option value="volvo">a</option>
               <option value="saab">Saab</option>
               <option value="opel">Opel</option>
               <option value="audi">Audi</option>
-            </select>
+            </select> 
             <select id="cars">
               <option value="volvo">a</option>
               <option value="saab">Saab</option>
@@ -56,8 +58,14 @@ import styles from './ProductDetail.module.css';
      
          
          </div>
-         
+          
          <p>{params.productId}</p>
+        
+          {/* <div style={{display: 'flex',justifyContent: 'space-between'}}> */}
+          <div>
+              <ImageSlider/>
+              <Reviews/>
+          </div> 
     </section>
   )
 }

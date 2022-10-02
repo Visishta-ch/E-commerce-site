@@ -6,6 +6,7 @@ const Home = () => {
     const authCtx = useContext(AuthContext)
     const logoutHandler=(e) => {
         e.preventDefault();
+        localStorage.removeItem('usermail')
         authCtx.logout();
         console.log('Logged out')
     }

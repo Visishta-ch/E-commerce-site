@@ -21,6 +21,7 @@ function App(props) {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
   console.log('log status', isLoggedIn);
+  
   const showCartList=()=>{
     setCartStatus(true);
     
@@ -58,7 +59,7 @@ function App(props) {
         </Route>
      
         {!isLoggedIn && <Route path='/Store'>
-          <h1>Not logged in...Please go back to home to login and can see the products </h1>
+        <h1>Not logged in...Please go back to home to login and can see the products </h1>
         </Route>}
       
 

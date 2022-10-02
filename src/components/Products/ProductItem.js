@@ -1,17 +1,47 @@
 import React,{useContext} from 'react'
+import axios from 'axios'
 import './ProductItem.css'
  import Cartcontext from '../../store/Cartcontext';
+ import AuthContext from '../../store/AuthContext';
 import {NavLink} from 'react-router-dom';
+// import Login from '../../pages/Login';
 
 const ProductItem = (props) => {
-  // console.log(props)
+  // / console.log(props.item)
+   const title  = props.item.title;
+   const price = props.item.price;
+   console.log('title::',title)
   const cartCtx = useContext(Cartcontext);
-
-  const addItemToCart = (e) => {
-     
+   const authCtx = useContext(AuthContext);
+  const userMailId = localStorage.getItem('usermail');
+  // console.log('mail from localStorage',userMailId);
+  const regex = /[`@.`]/g;
+  const um = userMailId.replace(regex,'');
+  console.log('mailwithout :', um);
+ async function addItemToCart (e)  {     
     e.preventDefault();
-    console.log('addItem')
-    cartCtx.addItems({...props.item});
+    console.log('addItem')    
+    try{
+      const userMailId = localStorage.getItem('usermail');
+      console.log('mail from localStorage',userMailId);
+        const userProduct = {
+            title,
+            price
+        }
+      const response = await axios.post(`https://crudcrud.com/api/8a9bafb9c75d49c3b8274fd6d8405412/cart${um}`, userProduct);
+      console.log('response frm crud crud', response)
+      if(response.status === 201){
+          console.log('response sent', response.data);
+          cartCtx.addItems({...props.item});
+      }
+      else{
+          alert('error in saving data');
+      }
+
+    }catch(error){
+        console.log('error in saving data catch block')
+    }
+    // cartCtx.addItems({...props.item});
     // console.log('cart items', cartCtx);
     }
 

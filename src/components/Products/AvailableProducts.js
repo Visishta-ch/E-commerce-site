@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductItem from './ProductItem'
-
+import Login from '../../pages/Login';
 
 
 const productsArr = [
@@ -42,10 +42,11 @@ const productsArr = [
     
     
 
-const AvailableProducts = () => {
+const AvailableProducts = (props) => {
 
    
-  
+   
+   
 
     const prod = productsArr.map((product) => (
         <ProductItem 
