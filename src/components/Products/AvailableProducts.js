@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductItem from './ProductItem'
-import Login from '../../pages/Login';
+
 
 
 const productsArr = [
@@ -46,7 +46,6 @@ const AvailableProducts = (props) => {
 
    
    
-   
 
     const prod = productsArr.map((product) => (
         <ProductItem 
@@ -58,6 +57,9 @@ const AvailableProducts = (props) => {
             price={product.price}
         />
     ))
+
+   
+
   return (
     <div className='productCard' style={{position:'relative',top:'7rem'}} id = 'id'>
        <div> {prod}</div> 

@@ -28,11 +28,21 @@
   color: #61dafb;
 }
 
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+
+
+.cartbtn{
+  position: relative;
+    top: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2.5rem;
+    padding: 10px;
+    width: 130px;
+    height: 40px;
+    text-align: center;
+    background-color:lightslategrey;
+    color: white;
+    font-size:16px;
+    left:40.5rem;
+    border-radius: 5px;
+}

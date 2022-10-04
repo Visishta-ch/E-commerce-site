@@ -42,7 +42,9 @@ const ContactUS = () => {
         <div className="page-header" style={{color: 'white', backgroundColor: 'gray',paddingTop: '63px'}}>
             The Generics <br/>
         </div>
-        <section>
+        <div className="page-contact">
+        <div></div>
+        <div >
         <h1>Please Fill in the Form to Proceed </h1>
         <div className="form-div">
             
@@ -56,8 +58,15 @@ const ContactUS = () => {
                 <button className='btn'>Submit Details</button>
             </form>
             </div>
+            </div>
+    {/* <div></div> */}
+        </div>
+        <footer  style={{top:'19rem',position: 'relative', backgroundColor:'skyblue'}}>
+        <div className="footer-icons">
+             <h2 style={{color: 'white'}}>The Generics</h2>     
 
-        </section>
+        </div>
+    </footer>
  </>
   )
 }

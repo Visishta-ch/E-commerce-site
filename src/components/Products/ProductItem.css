@@ -9,9 +9,21 @@
 
     
 }
-/* product-img{
-    width: 118px;
-    height: 121px;
+.product-img{
+    /* width: 118px;
+    height: 121px; */
+    transform-origin: center center;
+    object-fit: cover;
+    height: 60%;
+    width: 75%; 
+    padding: 0px;
+    margin: 0px;
+    transition: ease-in 0.5s; 
+    filter: brightness(100%);
+
+}
+/* .product-img:hover{
+    transform: scale(1.2);
 } */
 .product h4{ 
     font-size:20px;

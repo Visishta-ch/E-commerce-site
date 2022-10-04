@@ -4,13 +4,16 @@ const Reviews = () => {
   return (
     <>
         <div className={styles.container}>
-            <h3>Reviews & Ratings</h3>
-            
+            <marquee >
+                 <h1 className={styles.multicolor}>Reviews & Ratings</h1>
+            </marquee>
+            <div>
             <span className="fa fa-star checked" style={{color:'rgb(244, 189, 47)'}}></span>
             <span className="fa fa-star checked" style={{color:'rgb(244, 189, 47)'}}></span>
             <span className="fa fa-star checked" style={{color:'rgb(244, 189, 47)'}}></span>
             <span className="fa fa-star checked" style={{color:'rgb(244, 189, 47)'}}></span>
             <span className="fa fa-star"></span>
+            </div>
             <p>4.1 average based on 254 reviews.</p>
             <hr style={{border:'3px solid #f1f1f1'}}></hr>
 

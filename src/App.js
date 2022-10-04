@@ -3,7 +3,7 @@ import {Route,Switch,Redirect} from 'react-router';
 import './App.css';
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Button from './components/Button'
+
 import AvailableProducts from './components/Products/AvailableProducts'
 import CartItem  from './components/CartItems/CartItem';
 import CartProvider from './store/CartProvider'
@@ -31,13 +31,15 @@ function App(props) {
     setCartStatus(false);
    }
 
+   
+
   return (
     <CartProvider>
       <Switch>
-        <Route path="/products">
+        {/* <Route path="/products">
             <Product/>
-        </Route>
-        <Route path = '/Store/:productId'>
+        </Route> */}
+        <Route path = '/Store/ProductDetail/:productId'>
           <ProductDetail/>
         </Route>
         <Route path = "/About">
@@ -52,14 +54,17 @@ function App(props) {
         <Route path = "/Login/:Store" >
         {cartStatus && <CartItem   onClick={hideCartList} />}
               <Header OpenCartHandler={showCartList}/>
+
               <AvailableProducts/>
-              <Button/>
+              <button className="cartbtn"onClick={showCartList}>See cart</button>
+              
               <Footer/> 
        
         </Route>
      
         {!isLoggedIn && <Route path='/Store'>
         <h1>Not logged in...Please go back to home to login and can see the products </h1>
+      
         </Route>}
       
 
@@ -67,7 +72,8 @@ function App(props) {
         {cartStatus && <CartItem   onClick={hideCartList} />}
               <Header OpenCartHandler={showCartList}/>
               <AvailableProducts/>
-              <Button/>
+              
+              <button  className="cartbtn" onClick={showCartList}>See cart</button>
               <Footer/> 
            
         </Route> }
@@ -77,7 +83,8 @@ function App(props) {
              {cartStatus && <CartItem   onClick={hideCartList} />}
               <Header OpenCartHandler={showCartList}/>
               <AvailableProducts/>
-              <Button/>
+              
+              <button className='cartbtn'>See cart</button>
               <Footer/> 
            </Route> 
         <Route path ='' exact>
