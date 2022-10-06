@@ -2,8 +2,8 @@ import React,{useRef,useState,useContext} from 'react'
 import AuthContext from '.././store/AuthContext'
 import {useHistory, NavLink} from 'react-router-dom';
 import styles from './Login.module.css';
-
-
+import Cartcontext from '../store/Cartcontext';
+import axios from 'axios'
 const Login = () => {
 
   const history = useHistory();
@@ -13,7 +13,36 @@ const Login = () => {
   // const [mailId, setMailId] = useState('');
   const mailref = useRef();
   const passwordref = useRef();
+  const cartCtx = useContext(Cartcontext);
+  
+  axios
+  .get(
+    `https://crudcrud.com/api/060ccc0ca09948908d1b5edec044c742/cartvish23gmailcom`
+  )
+  .then((response) => {
+    console.log('rendered in app when refreshed', response);
+    const cartListItem = [];
+    for (let i = 0; i < response.data.length; i++) {
+      var item = response.data;
+      console.log('item: ' + item)
+      const index = cartListItem.findIndex((i) => i.title === item.title);
+      console.log('index: ' + index)
+      if (index === -1) {
+        cartListItem.push(response.data[i]);
+        cartCtx.setItem(cartListItem);
+      } else {
+        cartListItem[index].quantity = cartListItem[index].quantity + 1;
+        cartCtx.setQuantity(cartListItem[index].quantity);
+      }
 
+      //   console.log(cartListItem);
+    }
+    // setItems(cartListItem)
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+  
 
   const submitLoginHandler=(e)=>{
       e.preventDefault();
@@ -40,12 +69,12 @@ const Login = () => {
         }).then(res =>{
           setLoading(false);
           if(res.ok){
-            console.log(res)
+            // console.log(res)
             history.replace('/Store')
         
-            console.log(res)
+            // console.log(res)
             return res.json().then((data)=>{
-              console.log('successfully stored, token generated:', data.idToken);
+              // console.log('successfully stored, token generated:', data.idToken);
               authCtx.login(data.idToken);
           })
         }
@@ -74,7 +103,7 @@ const Login = () => {
                 <NavLink to='/Contact' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">CONTACT US</NavLink>
                 
             </div>
-            <button to='/Login' style={{textDecoration: 'none',color: 'Black',position: 'relative', float:'right',top:'-46px',left:'-25px'}}>LOGOUT</button>
+            {/* <button to='/Login' style={{textDecoration: 'none',color: 'Black',position: 'relative', float:'right',top:'-46px',left:'-25px'}}>LOGOUT</button> */}
          </nav>
      
         <div className="page-header" style={{color: 'white', backgroundColor: 'gray',paddingTop: '110px',fontSize:'60px'}}>

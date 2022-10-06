@@ -87,10 +87,10 @@ const ImageSlider = (props) => {
                         </div>
                    </span>
                    <div>   
-                        <h4 style={{fontSize: '20px', color:'black',fontFamily:'Helvetica'}}>What our customers felt</h4>
+                        <h4 style={{fontSize: '20px', color:'black',fontFamily:'Helvetica',position:'relative',top:'-17px'}}>What our customers felt</h4>
                         <div style={{display:'flex', flexWrap:'row-wrap'}}>
                             <div style={{width:'25px', height:'25px'}}>
-                                <img src={rate} alt='' style={{width:'20px', heigth:'15px'}} />
+                                <img src={rate} alt='' style={{width:'20px', heigth:'15px',position:'relative',top:'-20px'}} />
                             </div>
                             <ul style={{display:'flex', flexWrap:'wrap',listStyle:'none',gap: '5px',
     top: '-28px'}}>

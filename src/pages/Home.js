@@ -4,6 +4,7 @@ import AuthContext from '../store/AuthContext';
 import './Home.css';
 const Home = () => {
   const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
   const logoutHandler = (e) => {
     e.preventDefault();
     localStorage.removeItem('usermail');
@@ -65,7 +66,7 @@ const Home = () => {
           </NavLink>
         </div>
         <div className="logdiv">
-          <NavLink
+          {!isLoggedIn && <NavLink
             to="/Login"
             style={{
               textDecoration: 'none',
@@ -81,8 +82,8 @@ const Home = () => {
             className="login"
           >
             LOGIN
-          </NavLink>
-          <NavLink
+          </NavLink>}
+         {isLoggedIn && <NavLink
             to="/Login"
             style={{
               textDecoration: 'none',
@@ -100,7 +101,7 @@ const Home = () => {
             onClick={logoutHandler}
           >
             LOGOUT
-          </NavLink>
+          </NavLink>}
         </div>
       </nav>
       {/* float:'right',top:'-46px',left:'-28px' */}

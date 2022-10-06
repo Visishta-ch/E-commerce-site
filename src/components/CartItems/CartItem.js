@@ -5,56 +5,16 @@ import './CartItem.css'
 import './Cart.css'
 import Cartcontext from '../../store/Cartcontext'
 import AuthContext from '../../store/AuthContext'
-// const cartElements = [
+import axios from 'axios'
 
-//     {
-//       id: 'k1',
-    
-//     title: 'Colors',
-    
-//     price: 100,
-    
-//     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-    
-//     quantity: 2,
-    
-//     },
-    
-//     {
-    
-//     title: 'Black and white Colors',
-    
-//     price: 50,
-    
-//     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-    
-//     quantity: 3,
-    
-//     },
-    
-//     // {
-    
-//     // title: 'Yellow and Black Colors',
-    
-//     // price: 70,
-    
-//     // imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-    
-//     // quantity: 1,
-    
-//     // },
-         
-            
-    
-//     ]
 
   
 const CartItem = (props) => {
     const authCtx = useContext(AuthContext);
     const isLoggedIn = authCtx.isLoggedIn;
     console.log('logged in status: ' + isLoggedIn);
-    console.log('token: ' + authCtx.token);
-    console.log('Logged mail: ' + authCtx.mail)
+    // console.log('token: ' + authCtx.token);
+    // console.log('Logged mail: ' + authCtx.mail)
     const cartCtx = useContext(Cartcontext);
     
     let amount=0;
@@ -65,22 +25,23 @@ const CartItem = (props) => {
       })
 
       const removeCartItem =(item) =>{
-        console.log('removeCartItem')
-        cartCtx.removeItems(item)
+        console.log('removeCartItem', item)
+        cartCtx.removeItems(item);
+       
       }
 
 
 
       const cartListItem = <ul className="listrow">{
       
-      cartCtx.items.map((item) =>   (  <li className="list-row"  key={item.id}>
+      cartCtx.items.map((item) =>   (  <li className="list-row"  key={item.id} id='listid'>
    
          <img src = {item.imageUrl} alt='img' style={{width:'80px', height:'80px',borderRadius:'5px'}} />
             <h4 style={{alignSelf:'center'}}>{item.title}</h4>
            <span className='list-price'>${item.price}</span> 
           <span className= 'list-amount'><input type="text" value={item.quantity} placeholder={item.quantity} style={{width:'20px', height:'20px',textAlign:'center'}} /></span> 
         
-          <button className='rmv-btn' onClick = {() => removeCartItem(item)}>remove</button>
+          <button className='rmv-btn' id='rmv' onClick = {() => removeCartItem(item)}>remove</button>
          </li>
       
       

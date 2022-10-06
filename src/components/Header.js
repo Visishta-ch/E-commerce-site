@@ -9,7 +9,7 @@ const Header = (props) => {
   let cartItemCount = 0;
   cartctx.items.forEach((item) => {
     cartItemCount += 1;
-    console.log('items in cart:', cartItemCount);
+    // console.log('items in cart:', cartItemCount);
   });
   const authCtx = useContext(AuthContext);
   const logoutHandler = (e) => {

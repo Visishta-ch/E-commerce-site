@@ -8,6 +8,13 @@ const Cartcontext = React.createContext({
     },
     removeItems : (id) => {
 
+    },
+
+    setItem:(item)=>{
+
+    },
+    setQuantity:(number)=>{
+
     }
 })
 

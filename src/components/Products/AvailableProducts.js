@@ -16,7 +16,7 @@ const productsArr = [
     {   id:'k2',
         title: 'Black and white Colors',
         price: 50,
-        quantity: 2,
+        quantity: 1,
         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
     
     },
@@ -36,6 +36,8 @@ const productsArr = [
         imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
     
     },
+  
+
 
     
     ]

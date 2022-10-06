@@ -2,17 +2,17 @@ import React from 'react';
 import { useParams, NavLink, useLocation } from 'react-router-dom';
 import searchLogo from '../components/images/finder.jpg';
 import styles from './ProductDetail.module.css';
-import Reviews from '../components/SingleProduct/Reviews';
+
 import ImageSlider from '../components/SingleProduct/ImageSlider';
-import Footer from '../components/Footer';
+
 
 const ProductDetail = (props) => {
   const params = useParams();
   console.log(params); //id of clicked product is been generated
   //const [imgparams,setImgParams] = useState(params)
   console.log(props);
-  const { pathname } = useLocation(props); ///Store/ProductDetail/k1
-  console.log(pathname);
+  // const { pathname } = useLocation(props); ///Store/ProductDetail/k1
+  // console.log(pathname);
   const location = useLocation(); ///Store/ProductDetail/
   const {price, title, image, id} = location.state;
   console.log(price, title, image, id);
