@@ -1,5 +1,5 @@
-import React, { useState, useContext} from 'react';
-import { Route, Switch} from 'react-router';
+import React, { useState, useContext } from 'react';
+import { Route, Switch } from 'react-router';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -19,42 +19,16 @@ import Cartcontext from './store/Cartcontext';
 
 function App(props) {
   const [cartStatus, setCartStatus] = useState(false);
-  
+
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
   console.log('log status', isLoggedIn);
   const cartCtx = useContext(Cartcontext);
 
-  const [cartitems, setCartItems] = useState([]);
-
-  const userMailId = localStorage.getItem('usermail');
-  let um;
-  if(userMailId != null) {
-    const regex = /[`@.`]/g;
-     um = userMailId.replace(regex, '');
-  }
- 
-
   const showCartList = () => {
     setCartStatus(true);
-
-    // axios
-    //   .get(
-    //     `https://crudcrud.com/api/738ca98430ec4db8ba6c6a00aff78ec9/cart${um}`
-    //   )
-    //   .then((response) => {
-    //     console.log(response);
-    //     for (var i = 0; i < response.data.length; i++) {
-    //       const item = response.data[i];
-    //       setCartItems(item);
-
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
-    // console.log('cart is opened');
   };
+
   const hideCartList = () => {
     setCartStatus(false);
   };

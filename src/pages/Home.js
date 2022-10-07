@@ -4,6 +4,9 @@ import AuthContext from '../store/AuthContext';
 import './Home.css';
 const Home = () => {
   const authCtx = useContext(AuthContext);
+
+  const userMailId = localStorage.getItem('usermail');
+
   const isLoggedIn = authCtx.isLoggedIn;
   const logoutHandler = (e) => {
     e.preventDefault();
@@ -14,7 +17,37 @@ const Home = () => {
   return (
     <div>
       <nav className="nav">
-        <div></div>
+        <div style={{ display: 'flex', flexDirection: 'row', margin: '2px' }}>
+          {authCtx.login && (
+            <>
+              <p
+                style={{
+                  alignItems: 'center',
+                  padding: '8px',
+                  fontSize: '15px',
+                  fontFamily: 'Helvetica',
+                }}
+              >
+                User
+              </p>
+              <span>
+                <button
+                  style={{
+                    padding: '10px',
+                    margin: '10px',
+                    textDecoration: 'none',
+                    background: 'none',
+                    color: 'white',
+                    fontFamily: 'monospace',
+                    fontSize: '16px',
+                  }}
+                >
+                  {userMailId}
+                </button>
+              </span>
+            </>
+          )}
+        </div>
         <div className="nav-bar">
           <NavLink
             to=""
@@ -66,42 +99,45 @@ const Home = () => {
           </NavLink>
         </div>
         <div className="logdiv">
-          {!isLoggedIn && <NavLink
-            to="/Login"
-            style={{
-              textDecoration: 'none',
-              color: 'white',
-              position: 'relative',
-              top: '1.5px',
-              padding: '8px',
-              margin: '8px',            
-              height: '24px',
-              width: '81px'
-            }}
-
-            className="login"
-          >
-            LOGIN
-          </NavLink>}
-         {isLoggedIn && <NavLink
-            to="/Login"
-            style={{
-              textDecoration: 'none',
-              color: 'black',
-              // height: '30px',
-              position: 'relative',
-              color: 'white',
-              top: '1.5px',
-              padding: '8px',
-              margin: '8px',
-              height: '24px',
-              width: '81px'
-            }}
-            className="logout"
-            onClick={logoutHandler}
-          >
-            LOGOUT
-          </NavLink>}
+          {!isLoggedIn && (
+            <NavLink
+              to="/Login"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                position: 'relative',
+                top: '1.5px',
+                padding: '8px',
+                margin: '8px',
+                height: '24px',
+                width: '81px',
+              }}
+              className="login"
+            >
+              LOGIN
+            </NavLink>
+          )}
+          {isLoggedIn && (
+            <NavLink
+              to="/Login"
+              style={{
+                textDecoration: 'none',
+                color: 'black',
+                // height: '30px',
+                position: 'relative',
+                color: 'white',
+                top: '1.5px',
+                padding: '8px',
+                margin: '8px',
+                height: '24px',
+                width: '81px',
+              }}
+              className="logout"
+              onClick={logoutHandler}
+            >
+              LOGOUT
+            </NavLink>
+          )}
         </div>
       </nav>
       {/* float:'right',top:'-46px',left:'-28px' */}

@@ -11,6 +11,8 @@ const Header = (props) => {
     cartItemCount += 1;
     // console.log('items in cart:', cartItemCount);
   });
+
+  const userMailId = localStorage.getItem('usermail');
   const authCtx = useContext(AuthContext);
   const logoutHandler = (e) => {
     e.preventDefault();
@@ -22,7 +24,38 @@ const Header = (props) => {
   return (
     <div>
       <nav>
-        <div></div>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          {authCtx.login && (
+            <>
+              <p
+                style={{
+                  alignItems: 'center',
+                  padding: '8px',
+                  fontSize: '15px',
+                  fontFamily: 'Helvetica',
+                }}
+              >
+                User
+              </p>
+              <span>
+                <button
+                  style={{
+                    padding: '10px',
+                    margin: '10px',
+                    textDecoration: 'none',
+                    background: 'none',
+                    color: 'white',
+                    fontFamily: 'monospace',
+                    fontSize: '16px',
+                  }}
+                >
+                  {userMailId}
+                </button>
+              </span>
+            </>
+          )}
+        </div>
+
         <div className="nav-bar">
           <NavLink
             to=""
@@ -94,7 +127,7 @@ const Header = (props) => {
               color: 'white',
               position: 'relative',
               margin: '8px',
-              
+
               background: 'none',
             }}
             onClick={logoutHandler}
