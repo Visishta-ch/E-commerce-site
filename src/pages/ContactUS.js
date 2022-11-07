@@ -1,5 +1,6 @@
 import React,{useRef} from 'react'
-import {NavLink} from 'react-router-dom';
+import Foot from './Foot'
+import Navbar from './Navbar'
 import './Contact.css'
 const ContactUS = () => {
     const nameRef = useRef('');
@@ -30,18 +31,8 @@ const ContactUS = () => {
 
   return (
     <>
-        <nav>
-        <div className="nav-bar">
-            <NavLink  to='' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-home">HOME</NavLink>
-            <NavLink to='/Store' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-store">STORE</NavLink>
-            <NavLink to='/About' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">ABOUT</NavLink>
-            <NavLink to='/Contact' style={{padding: '10px', margin: '10px',textDecoration: 'none',color: 'white'}} className="nav-about">CONTACT </NavLink>
-
-        </div>
-        </nav>
-        <div className="page-header" style={{color: 'white', backgroundColor: 'gray',paddingTop: '63px'}}>
-            The Generics <br/>
-        </div>
+        
+        <Navbar />
         <div className="page-contact">
         <div></div>
         <div >
@@ -59,14 +50,9 @@ const ContactUS = () => {
             </form>
             </div>
             </div>
-    {/* <div></div> */}
         </div>
-        <footer  style={{top:'19rem',position: 'relative', backgroundColor:'skyblue'}}>
-        <div className="footer-icons">
-             <h2 style={{color: 'white'}}>The Generics</h2>     
-
-        </div>
-    </footer>
+       
+    <Foot />
  </>
   )
 }

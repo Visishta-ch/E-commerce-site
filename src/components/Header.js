@@ -114,10 +114,10 @@ const Header = (props) => {
           }}
         >
           <div style={{ display: 'flex' }}>
-            {' '}
+          
             <button className="cart-btn" onClick={props.OpenCartHandler}>
-              Cart{' '}
-            </button>{' '}
+              Cart
+            </button>
             <span className="cart-number">{cartItemCount}</span>
           </div>
           <button

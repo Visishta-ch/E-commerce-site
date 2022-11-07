@@ -11,7 +11,6 @@ import CartProvider from './store/CartProvider';
 import Home from './pages/Home';
 import About from './pages/About';
 import ContactUS from './pages/ContactUS';
-// import ProductDetail from './pages/ProductDetail';
 import Login from './pages/Login';
 import AuthContext from './store/AuthContext';
 
@@ -38,9 +37,7 @@ function App() {
     <CartProvider>
     <Suspense>
       <Switch>
-        {/* <Route path="/products">
-            <Product/>
-        </Route> */}
+        
         <Route path="/Store/ProductDetail/:productId">
           <ProductDetail />
         </Route>

@@ -7,7 +7,7 @@ import axios from 'axios';
 const Login = () => {
   const history = useHistory();
   const authCtx = useContext(AuthContext);
-  const [loading, setLoading] = useState(false);
+ // const [loading, setLoading] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   // const [mailId, setMailId] = useState('');
   const mailref = useRef();
@@ -60,43 +60,8 @@ const Login = () => {
 
     const enteredPassword = passwordref.current.value;
     // console.log('saved', enteredMail, enteredPassword);
-    setLoading(true);
-    // if (isLogin) {
-    //   fetch(
-    //     'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDBuJqLrVJWStm5LJ9fPdVwCcmuZUE9rzo',
-    //     {
-    //       method: 'POST',
-    //       body: JSON.stringify({
-    //         email: enteredMail,
-    //         password: enteredPassword,
-    //         returnSecureToken: true,
-    //       }),
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //     }
-    //   ).then((res) => {
-    //     setLoading(false);
-    //     if (res.ok) {
-    //       // console.log(res)
-    //       history.replace('/Store');
-
-    //       // console.log(res)
-    //       return res.json().then((data) => {
-    //         // console.log('successfully stored, token generated:', data.idToken);
-    //         authCtx.login(data.idToken);
-    //       });
-    //     } else {
-    //       return res.json().then((data) => {
-    //         let loginError = ' Authentication failed';
-    //         if (data && data.error && data.error.message) {
-    //           loginError = data.error.message;
-    //         }
-    //         alert(loginError);
-    //       });
-    //     }
-    //   });
-    // }
+    
+    
     if(isLogin){
       url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDBuJqLrVJWStm5LJ9fPdVwCcmuZUE9rzo'
     }else{
@@ -114,7 +79,7 @@ const Login = () => {
         'Content-Type': 'application/json'
       }
     }).then(response => {
-      setLoading(false);
+  
       if(response.ok){
             return response.json();
       }else{
