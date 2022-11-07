@@ -1,29 +1,30 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, Suspense } from 'react';
 import { Route, Switch } from 'react-router';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-import AvailableProducts from './components/Products/AvailableProducts';
+// import AvailableProducts from './components/Products/AvailableProducts';
 import CartItem from './components/CartItems/CartItem';
 import CartProvider from './store/CartProvider';
 
 import Home from './pages/Home';
 import About from './pages/About';
 import ContactUS from './pages/ContactUS';
-import ProductDetail from './pages/ProductDetail';
+// import ProductDetail from './pages/ProductDetail';
 import Login from './pages/Login';
 import AuthContext from './store/AuthContext';
-import axios from 'axios';
-import Cartcontext from './store/Cartcontext';
 
-function App(props) {
+const ProductDetail = React.lazy(()=> import('./pages/ProductDetail'));
+const AvailableProducts = React.lazy(()=> import('./components/Products/AvailableProducts'));
+
+function App() {
   const [cartStatus, setCartStatus] = useState(false);
 
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
   console.log('log status', isLoggedIn);
-  const cartCtx = useContext(Cartcontext);
+  
 
   const showCartList = () => {
     setCartStatus(true);
@@ -35,6 +36,7 @@ function App(props) {
 
   return (
     <CartProvider>
+    <Suspense>
       <Switch>
         {/* <Route path="/products">
             <Product/>
@@ -114,30 +116,12 @@ function App(props) {
         <Route path="" exact>
           <Home />
         </Route>
+
       </Switch>
+      </Suspense>
     </CartProvider>
   );
 }
 
 export default App;
-/***/
-/**   // console.log('mail from localStorage',userMailId);
-    // const regex = /[`@.`]/g;
-    // const um = userMailId.replace(regex, '');
-    // console.log(um);
-  // useEffect(() => {
-  
-  //   axios
-  //   .get(
-  //     `https://crudcrud.com/api/01db1dd53f9c4461adaaf7e6cb31b4cb/cart/${um}`
-  //   )
-  //   .then((response) => {
-  //     for (var i = 0; i < response.data.length; i++) {
-  //       cartCtx.items(response.data[i]);
-  //       setCartItems(cartCtx.items);
-  //     }
-  //   })
-  //   .catch((err) => {
-  //     console.error(err);
-  //   });
-  // }, []) */
+

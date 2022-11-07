@@ -22,14 +22,17 @@ const Login = () => {
     // console.log(um);
   }
 
+  const switchAuthModeHandler = ()=>{
+    setIsLogin(!isLogin);
+  }
   axios
-    .get(`https://crudcrud.com/api/a2713e4f0ff449019bbf732905c0a7a4/cart${um}`)
+    .get(`https://crudcrud.com/api/c1d9e1ae0f754f14a379b3c47946b34c/cart${um}`)
     .then((response) => {
-      console.log('rendered in app when refreshed', response);
+      // console.log('rendered in app when refreshed', response);
       const cartListItem = [];
       for (let i = 0; i < response.data.length; i++) {
         var item = response.data;
-        console.log('item: ' + item);
+        // console.log('item: ' + item);
         const index = cartListItem.findIndex((i) => i.title === item.title);
         // console.log('index: ' + index)
         if (index === -1) {
@@ -50,50 +53,89 @@ const Login = () => {
 
   const submitLoginHandler = (e) => {
     e.preventDefault();
-
+    let url;
     const enteredMail = mailref.current.value;
     authCtx.userMail(enteredMail);
     localStorage.setItem('usermail', enteredMail);
 
     const enteredPassword = passwordref.current.value;
-    console.log('saved', enteredMail, enteredPassword);
+    // console.log('saved', enteredMail, enteredPassword);
     setLoading(true);
-    if (isLogin) {
-      fetch(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDBuJqLrVJWStm5LJ9fPdVwCcmuZUE9rzo',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            email: enteredMail,
+    // if (isLogin) {
+    //   fetch(
+    //     'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDBuJqLrVJWStm5LJ9fPdVwCcmuZUE9rzo',
+    //     {
+    //       method: 'POST',
+    //       body: JSON.stringify({
+    //         email: enteredMail,
+    //         password: enteredPassword,
+    //         returnSecureToken: true,
+    //       }),
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //     }
+    //   ).then((res) => {
+    //     setLoading(false);
+    //     if (res.ok) {
+    //       // console.log(res)
+    //       history.replace('/Store');
+
+    //       // console.log(res)
+    //       return res.json().then((data) => {
+    //         // console.log('successfully stored, token generated:', data.idToken);
+    //         authCtx.login(data.idToken);
+    //       });
+    //     } else {
+    //       return res.json().then((data) => {
+    //         let loginError = ' Authentication failed';
+    //         if (data && data.error && data.error.message) {
+    //           loginError = data.error.message;
+    //         }
+    //         alert(loginError);
+    //       });
+    //     }
+    //   });
+    // }
+    if(isLogin){
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDBuJqLrVJWStm5LJ9fPdVwCcmuZUE9rzo'
+    }else{
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDBuJqLrVJWStm5LJ9fPdVwCcmuZUE9rzo'
+    }
+
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: enteredMail,
             password: enteredPassword,
             returnSecureToken: true,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      ).then((res) => {
-        setLoading(false);
-        if (res.ok) {
-          // console.log(res)
-          history.replace('/Home');
-
-          // console.log(res)
-          return res.json().then((data) => {
-            // console.log('successfully stored, token generated:', data.idToken);
-            authCtx.login(data.idToken);
-          });
-        } else {
-          return res.json().then((data) => {
-            let loginError = ' Authentication failed';
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => {
+      setLoading(false);
+      if(response.ok){
+            return response.json();
+      }else{
+        return response.json().then((data) => {
+          let loginError = ' Authentication failed';
             if (data && data.error && data.error.message) {
               loginError = data.error.message;
             }
             alert(loginError);
-          });
-        }
-      });
-    }
+        })
+      }
+    }).then((data)=>{
+      authCtx.login(data.idToken);
+      if(isLogin){
+        history.replace('/Store');
+      }
+      else{
+          alert('Authentication successful!!! Please Login to your account')
+      }
+    })
+
   };
   return (
     <>
@@ -163,7 +205,7 @@ const Login = () => {
         Welcome to Generics <br />
       </div>
       <div className={styles.form_div}>
-        <h1 style={{ fontFamily: 'cursive' }}>USER LOGIN </h1>
+        <h1 style={{ fontFamily: 'cursive' }}>{isLogin? 'USER LOGIN': 'SIGN IN' }</h1>
         <form onSubmit={submitLoginHandler} className={styles.form}>
           <label htmlFor="Email">Email</label>
           <br />
@@ -186,8 +228,18 @@ const Login = () => {
           />
           <br></br>
           {/* {loading && <p style={{color:'black'}}>Sending Request.....</p>} */}
-          <button className={styles.btn}>Login</button>
+          <button className={styles.btn}>{isLogin? 'Login' : 'Signup'}</button>
+          <br/>
+          <button
+            type='button'
+            className={styles.toggle}
+            onClick={switchAuthModeHandler}
+          >
+            {isLogin ? 'Create new account' : 'Login with existing account'}
+          </button>
         </form>
+       
+       
       </div>
 
       <footer className={styles.footer}>

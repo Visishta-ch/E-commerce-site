@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React  from 'react'
 
 const Cartcontext = React.createContext({
     items: [],
@@ -13,9 +13,6 @@ const Cartcontext = React.createContext({
     setItem:(item)=>{
 
     },
-    setQuantity:(number)=>{
-
-    }
 })
 
 export default Cartcontext

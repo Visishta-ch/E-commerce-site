@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext,} from 'react';
 
 import './ProductItem.css';
 import Cartcontext from '../../store/Cartcontext';
-import AuthContext from '../../store/AuthContext';
+
 import { Link} from 'react-router-dom';
 
 const ProductItem = (props) => {
@@ -12,7 +12,7 @@ const ProductItem = (props) => {
  
   const cartCtx = useContext(Cartcontext);
   // console.log(cartCtx.items);
-  const authCtx = useContext(AuthContext);
+  
  
     const addItemToCart =(e)=> {
     e.preventDefault();

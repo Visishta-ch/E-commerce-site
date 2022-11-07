@@ -20,7 +20,6 @@ export const AuthContextProvider = (props) => {
             // setMail(mail)
             localStorage.setItem('token', token);
             
-            console.log('token')
     }
 
     const logoutHandler =()=>{

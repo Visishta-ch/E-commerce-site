@@ -20,7 +20,7 @@ const Home = () => {
         <div style={{ display: 'flex', flexDirection: 'row', margin: '2px' }}>
           {authCtx.login && (
             <>
-              <p
+             {!authCtx.login && <p
                 style={{
                   alignItems: 'center',
                   padding: '8px',
@@ -28,8 +28,8 @@ const Home = () => {
                   fontFamily: 'Helvetica',
                 }}
               >
-                User
-              </p>
+                User Id
+              </p>}
               <span>
                 <button
                   style={{
@@ -122,7 +122,7 @@ const Home = () => {
               to="/Login"
               style={{
                 textDecoration: 'none',
-                color: 'black',
+                // color: 'black',
                 // height: '30px',
                 position: 'relative',
                 color: 'white',
